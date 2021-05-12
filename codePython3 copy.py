@@ -1,86 +1,64 @@
 import os
 os.system("cls")
 
-productenlijst = {"appel": 155, "peer": 120, "appelsap": 299, "bier": 4250, "lolly": 99999}
+contacten = {"Jan Jannes": 878971387 ,"Henk Hark": 489573948, "Piet Pientje": 324684888, "Barend Binck": 234987427, "Anne Annelotte": 324864823}
 
-def productlijst(productenlijst):
-    for key, value in productenlijst.items():
+def contactlijst(contacten):
+    for key, value in contacten.items():
         print(key, value)
 
-def overzicht(productenlijst):
-    productlijst(productenlijst)
+def overzicht(contacten):
+    contactlijst(contacten)
 
-def toevoegen(productenlijst):
-    product = input("Welk product wilt u tovoegen? ")
-    prijs = input("Hoe duur is het product? ")
-    productenlijst[product] = int(prijs)
-    productlijst(productenlijst)
+def toevoegen(contacten):
+    nieuw_contact = input("Hoe heet het contact dat u wil toevoegen? ")
+    telefoonnummer = input("Wat is het telefoonnummer van dit contact? ")
+    contacten[nieuw_contact] = int(telefoonnummer)
+    contactlijst(contacten)
 
-def aanpassen(productenlijst):
-    productlijst(productenlijst)
-    producta = input("Welk product wilt u aanpassen? ")
-    prijsa = input("Hoe duur word het product? ")
-    productenlijst[producta] = prijsa
-    productlijst(productenlijst)
+def aanpassen(contacten):
+    contactlijst(contacten)
+    contact_aanpassen = input("Welk Contact wilt u aanpassen? ")
+    nieuw_telefoonnummer = input("Wat wordt het nieuwe telefoonnummer van dit contact? ")
+    contacten[contact_aanpassen] = nieuw_telefoonnummer
+    contactlijst(contacten)
 
-def verwijderen(productenlijst):
-    productlijst(productenlijst)
-    productape = input("Welk product wilt u verwijderen? ")
-    del productenlijst[productape]
-    productlijst(productenlijst)
+def verwijderen(contacten):
+    contactlijst(contacten)
+    verwijder_contact = input("Welk contact wilt u verwijderen? ")
+    del contacten[verwijder_contact]
+    contactlijst(contacten)
 
-def boodschappen(productenlijst):
-    prijstotaal = 0
-    vraag = input("Wilt u iets gaan kopen? ")
-    question = vraag.lower()
-    while question != "nee":
-        if question == "ja":
-            productlijst(productenlijst)
-            productain = str(input("welk product wilt u kopen? "))
-            prijstotaal += int(productenlijst[productain])
-            print(prijstotaal)
-        elif question == "nee":
-            boodschappenprijs = str(boodschappenprijs)
-            print("De prijs van uw boodschappen is: €" + boodschappenprijs + ".")
-            return prijstotaal
-        else:
-            print("Fout, probeer iets anders! ")
-        vraag = input("Wil je iets gaan kopen? ")
-        question = vraag.lower()
+def aantal_contacten():
+    print(contacten)
 
-def main():
+def menu():
     print("")
     print("Wat wilt u doen?")
-    print("O = onze producten")
-    print("T = toevoegen")
-    print("A = aanpassen")
-    print("V = verwijderen")
-    print("B = boodschappen doen")
+    print("O = Overzicht Contacten")
+    print("T = Contact Toevoegen")
+    print("A = Contact Aanpassen")
+    print("V = Contact Verwijderen")
     print("S = stoppen")
+    print("")
+
+def main():
+    menu()
     input_ = input("")
     letter = input_.lower()
     while letter != "s":
         if letter == "o":
-            overzicht(productenlijst)
+            overzicht(contacten)
         elif letter == "t":
-            toevoegen(productenlijst)
+            toevoegen(contacten)
         elif letter == "a":
-            aanpassen(productenlijst)
+            aanpassen(contacten)
         elif letter == "v":
-            verwijderen(productenlijst)
-        elif letter == "b":
-            boodschappen(productenlijst)
+            verwijderen(contacten)
         else:
             print("")
             print("Fout, probeer iets anders. ")
-        print("")
-        print("wat wilt u doen?")
-        print("O = onze producten")
-        print("T = toevoegen")
-        print("A = aanpassen")
-        print("V = verwijderen")
-        print("B = boodschappen doen")
-        print("S = stoppen")
+        menu()
         input_ = input("")
         letter = input_.lower()
 
