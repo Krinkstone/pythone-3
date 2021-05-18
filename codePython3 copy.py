@@ -1,8 +1,6 @@
 import os
 os.system("cls")
 
-contacten = {"Jan Jannes": 878971387 ,"Henk Hark": 489573948, "Piet Pientje": 324684888, "Barend Binck": 234987427, "Anne Annelotte": 324864823}
-
 def contactlijst(contacten):
     for key, value in contacten.items():
         print(key, value)
@@ -15,6 +13,7 @@ def toevoegen(contacten):
     telefoonnummer = input("Wat is het telefoonnummer van dit contact? ")
     contacten[nieuw_contact] = int(telefoonnummer)
     contactlijst(contacten)
+    return contacten
 
 def aanpassen(contacten):
     contactlijst(contacten)
@@ -22,14 +21,16 @@ def aanpassen(contacten):
     nieuw_telefoonnummer = input("Wat wordt het nieuwe telefoonnummer van dit contact? ")
     contacten[contact_aanpassen] = nieuw_telefoonnummer
     contactlijst(contacten)
+    return contacten
 
 def verwijderen(contacten):
     contactlijst(contacten)
     verwijder_contact = input("Welk contact wilt u verwijderen? ")
     del contacten[verwijder_contact]
     contactlijst(contacten)
+    return contacten
 
-def aantal_contacten():
+def aantal_contacten(contacten):
     print(contacten)
 
 def menu():
@@ -43,6 +44,7 @@ def menu():
     print("")
 
 def main():
+    contacten = {"Jan Jannes": 878971387 ,"Henk Hark": 489573948, "Piet Pientje": 324684888, "Barend Binck": 234987427, "Anne Annelotte": 324864823}
     menu()
     input_ = input("")
     letter = input_.lower()
@@ -50,11 +52,11 @@ def main():
         if letter == "o":
             overzicht(contacten)
         elif letter == "t":
-            toevoegen(contacten)
+            contacten = toevoegen(contacten)
         elif letter == "a":
-            aanpassen(contacten)
+            contacten = aanpassen(contacten)
         elif letter == "v":
-            verwijderen(contacten)
+            contacten = verwijderen(contacten)
         else:
             print("")
             print("Fout, probeer iets anders. ")
